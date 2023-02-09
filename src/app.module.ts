@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { Booking } from './bookings/entities/booking.entity';
+import { BookingModule } from './bookings/bookings.module';
 
 @Module({
   imports: [
@@ -17,10 +19,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
         autoLoadEntities: true,
+        entities: [Booking],
         synchronize: true, // Setting synchronize: true shouldn't be used in production - otherwise you can lose production data.
       }),
       inject: [ConfigService],
     }),
+    BookingModule,
   ],
   controllers: [AppController],
   providers: [AppService],

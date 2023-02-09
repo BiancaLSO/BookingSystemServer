@@ -27,7 +27,7 @@ describe('AppController (e2e)', () => {
     );
 
     const { body } = await request(app.getHttpServer())
-      .post('/bookings')
+      .post('/booking')
       .send(booking)
       .expect(201);
 

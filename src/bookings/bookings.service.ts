@@ -12,7 +12,7 @@ export class BookingsService {
   ) {}
 
   async findAll(): Promise<Booking[]> {
-    return;
+    return this.bookingRepository.find();
   }
 
   async findById(id: number): Promise<Booking> {
@@ -23,7 +23,11 @@ export class BookingsService {
     return this.bookingRepository.save(bookingDto);
   }
 
-  async update(id: number, bookingDto: BookingDto) {}
+  // async update(id: number, bookingDto: BookingDto): Promise<Booking> {
 
-  async remove(id: number): Promise<void> {}
+  // }
+
+  async delete(id: number) {
+    return this.bookingRepository.delete(id);
+  }
 }
