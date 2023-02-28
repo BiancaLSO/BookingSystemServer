@@ -3,7 +3,7 @@ import { BookingsService } from './bookings.service';
 import { BookingDto } from './entities/booking.dto';
 import { Booking } from './entities/booking.entity';
 
-@Controller('booking')
+@Controller('bookings')
 export class BookingsController {
   constructor(private bookingService: BookingsService) {}
 
