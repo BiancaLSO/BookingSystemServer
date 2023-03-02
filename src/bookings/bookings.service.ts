@@ -23,9 +23,11 @@ export class BookingsService {
     return this.bookingRepository.save(bookingDto);
   }
 
-  // async update(id: number, bookingDto: BookingDto): Promise<Booking> {
-
-  // }
+  async update(id: number, bookingDto: BookingDto): Promise<Booking> {
+    await this.bookingRepository.update({ id }, { ...bookingDto });
+    const updatedBooking = await this.bookingRepository.findOneBy({ id: id });
+    return updatedBooking;
+  }
 
   async delete(id: number) {
     return this.bookingRepository.delete(id);
